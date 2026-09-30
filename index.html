@@ -155,7 +155,7 @@
         .timeline {
             display: flex;
             flex-direction: column;
-            gap: 24px;
+            gap: 20px;
         }
 
         .timeline-item {
@@ -193,7 +193,7 @@
             color: var(--text-muted);
         }
 
-        /* Publications List - FIXED OVERLAP & ACTION BADGE */
+        /* Publications List Layout */
         .pub-list {
             display: flex;
             flex-direction: column;
@@ -244,7 +244,7 @@
         }
 
         .view-fig-btn {
-            shrink: 0;
+            flex-shrink: 0;
             white-space: nowrap;
             font-size: 0.8rem;
             font-weight: 700;
@@ -295,7 +295,7 @@
             margin-top: 4px;
         }
 
-        /* Modal Overlay - FIXED LAYOUT & DISPLAY */
+        /* Modal Overlay */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -465,10 +465,54 @@
                 </div>
             </section>
 
-            <!-- 02 Selected Publications -->
-            <section id="publications">
+            <!-- 02 Experience -->
+            <section id="experience">
                 <div class="section-header">
                     <span class="section-num">02</span>
+                    <h2>Experience</h2>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">2022 – Present</div>
+                        <div>
+                            <div class="timeline-title">Research Scientist Associate</div>
+                            <div class="timeline-org">New York University Abu Dhabi (NYUAD)</div>
+                            <div class="timeline-desc">Conducting cutting-edge research in generative AI, computational social science, and multimodal neural network modeling.</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2019 – 2022</div>
+                        <div>
+                            <div class="timeline-title">Postdoctoral Research Fellow</div>
+                            <div class="timeline-org">Multimedia University / IIUM</div>
+                            <div class="timeline-desc">Focused on environmental neural modeling, deep vision applications for space robotics, and computer vision architectures.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 03 Education -->
+            <section id="education">
+                <div class="section-header">
+                    <span class="section-num">03</span>
+                    <h2>Education</h2>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">2015 – 2019</div>
+                        <div>
+                            <div class="timeline-title">Ph.D. in Engineering</div>
+                            <div class="timeline-org">International Islamic University Malaysia (IIUM)</div>
+                            <div class="timeline-desc">Thesis focused on intelligent pattern recognition and deep neural architectures.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 04 Publications -->
+            <section id="publications">
+                <div class="section-header">
+                    <span class="section-num">04</span>
                     <h2>Selected Publications</h2>
                 </div>
                 <div class="pub-list">
@@ -513,6 +557,20 @@
                         <div class="pub-authors"><strong>AlDahoul, N.</strong>, Tan, M. J. T., Kasireddy, H. R., &amp; Zaki, Y.</div>
                         <div class="pub-meta"><span class="pub-venue">Journal of Big Data</span></div>
                         <div class="pub-desc">Benchmarking large language models and evaluation frameworks for mitigating online toxicity and safe AI deployments.</div>
+                    </div>
+
+                    <div class="pub-item" data-paper-id="web_genai">
+                        <div class="pub-header-row">
+                            <div class="pub-title">
+                                <a href="https://doi.org/10.1038/s41598-024-81418-5" target="_blank" onclick="event.stopPropagation();">
+                                    Towards a World Wide Web powered by generative AI
+                                </a>
+                            </div>
+                            <span class="view-fig-btn"><i class="fa-solid fa-image"></i> View Figures</span>
+                        </div>
+                        <div class="pub-authors"><strong>AlDahoul, N.</strong>, et al.</div>
+                        <div class="pub-meta"><span class="pub-venue">Scientific Reports</span></div>
+                        <div class="pub-desc">Exploring generative AI integration across search engine engines and future web ecosystems.</div>
                     </div>
 
                 </div>
@@ -560,6 +618,14 @@
                 desc: "Benchmarking large language models and evaluation frameworks for mitigating online toxicity.",
                 figures: [
                     { src: "figures/guardians_fig1.png", caption: "Figure 1: Performance evaluation across state-of-the-art toxicity detection models." }
+                ]
+            },
+            "web_genai": {
+                title: "Towards a World Wide Web powered by generative AI",
+                venue: "Scientific Reports",
+                desc: "Exploring generative AI integration across search engines and future web ecosystems.",
+                figures: [
+                    { src: "figures/web_genai_fig1.png", caption: "Figure 1: Conceptual structure of generative web search architecture." }
                 ]
             }
         };
