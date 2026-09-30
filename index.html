@@ -63,7 +63,7 @@
         }
 
         .page {
-            max-width: 46rem;
+            max-width: 54rem;
             margin: 0 auto;
             padding: clamp(2.5rem, 7vw, 5rem) 1.5rem 4rem;
         }
@@ -150,6 +150,182 @@
             color: var(--violet);
             padding: 0.3rem 0.8rem;
             border-radius: 999px;
+        }
+
+        /* About: photo | bio | gallery shortcut */
+        .about-layout {
+            display: grid;
+            grid-template-columns: 9.5rem minmax(0, 1fr) 9rem;
+            grid-template-areas: "photo body gallery";
+            gap: 1.75rem;
+            align-items: start;
+        }
+
+        .about-photo { grid-area: photo; margin: 0; position: relative; }
+        .about-body { grid-area: body; }
+        .gallery-shortcut { grid-area: gallery; }
+
+        .about-photo img {
+            display: block;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 4 / 5;
+            object-fit: cover;
+            border-radius: 6px;
+            background: var(--violet-soft);
+        }
+
+        .about-photo .monogram {
+            display: none;
+            aspect-ratio: 4 / 5;
+            border-radius: 6px;
+            background: var(--violet-soft);
+            color: var(--violet);
+            font-size: 2.4rem;
+            font-weight: 600;
+            align-items: center;
+            justify-content: center;
+            letter-spacing: 0.02em;
+        }
+
+        .about-photo.no-photo img { display: none; }
+        .about-photo.no-photo .monogram { display: flex; }
+
+        .gallery-shortcut {
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+            border: 1px solid var(--rule);
+            border-radius: 6px;
+            overflow: hidden;
+            transition: border-color 0.15s ease;
+        }
+
+        .gallery-shortcut:hover { border-color: var(--violet); }
+
+        .gallery-shortcut:focus-visible {
+            outline: 2px solid var(--violet);
+            outline-offset: 3px;
+        }
+
+        .gs-thumb {
+            position: relative;
+            display: block;
+            aspect-ratio: 1 / 1;
+            background: #ffffff;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .gs-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+        }
+
+        .gs-icon {
+            position: absolute;
+            right: 0.5rem;
+            bottom: 0.5rem;
+            width: 2.1rem;
+            height: 2.1rem;
+            border-radius: 50%;
+            background: var(--violet);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+        }
+
+        .gs-thumb.no-thumb {
+            background: var(--violet-soft);
+        }
+
+        .gs-thumb.no-thumb .gs-icon {
+            right: 50%;
+            bottom: 50%;
+            transform: translate(50%, 50%);
+            width: 3rem;
+            height: 3rem;
+            font-size: 1.3rem;
+        }
+
+        .gs-title {
+            font-weight: 600;
+            padding: 0.6rem 0.75rem 0;
+        }
+
+        .gallery-shortcut:hover .gs-title { color: var(--violet-hover); }
+
+        .gs-sub {
+            font-family: var(--sans);
+            font-size: 0.8rem;
+            color: var(--muted);
+            padding: 0.1rem 0.75rem 0.7rem;
+        }
+
+        @media (max-width: 760px) {
+            .about-layout {
+                grid-template-columns: 1fr 1fr;
+                grid-template-areas:
+                    "photo gallery"
+                    "body body";
+                gap: 1.25rem;
+            }
+            .about-photo, .gallery-shortcut { max-width: 11rem; width: 100%; }
+            .gallery-shortcut { justify-self: end; }
+        }
+
+        /* News */
+        .news .entry-title a {
+            color: var(--violet);
+        }
+
+        .news-item summary {
+            list-style: none;
+            cursor: pointer;
+        }
+
+        .news-item summary::-webkit-details-marker { display: none; }
+
+        .news-item summary:focus-visible {
+            outline: 2px solid var(--violet);
+            outline-offset: 3px;
+            border-radius: 2px;
+        }
+
+        .news-item .entry-title { display: block; }
+
+        .news-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-top: 0.4rem;
+            font-family: var(--sans);
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--violet);
+        }
+
+        .news-more i { font-size: 0.75rem; transition: transform 0.2s ease; }
+        .news-item[open] .news-more i { transform: rotate(180deg); }
+        .news-item summary:hover .more-label { text-decoration: underline; text-underline-offset: 3px; }
+
+        .news-details {
+            margin-top: 0.75rem;
+            padding-left: 0.9rem;
+            border-left: 2px solid var(--violet-soft);
+            color: var(--ink-2);
+            font-size: 0.97rem;
+        }
+
+        .news-details p + p { margin-top: 0.6rem; }
+
+        .news-details a {
+            color: var(--violet);
+            text-underline-offset: 3px;
         }
 
         /* Dated entries: experience, education, awards, publications */
@@ -336,6 +512,36 @@
 
         .fig-card:hover .fig-caption { color: var(--violet-hover); }
 
+        .gallery-groups[hidden],
+        .fig-group[hidden] { display: none; }
+
+        .fig-group { margin-top: 2.25rem; }
+
+        .fig-group-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .fig-group-title a {
+            text-decoration: none;
+        }
+
+        .fig-group-title a:hover {
+            color: var(--violet-hover);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .fig-group-venue {
+            font-family: var(--sans);
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-top: 0.15rem;
+        }
+
+        .fig-group .gallery-grid { margin-top: 1rem; }
+
         .gallery-empty {
             margin-top: 1.25rem;
             color: var(--muted);
@@ -381,7 +587,14 @@
 
         <section class="about" id="about">
             <h2>About</h2>
-            <p>Nouar AlDahoul is a Research Scientist at New York University Abu Dhabi (NYUAD), specializing in artificial intelligence, environmental modeling, healthcare applications, and computational social science. She received her Ph.D. in Engineering from the International Islamic University Malaysia in 2019. She previously served as a postdoctoral associate at NYUAD, where she led experimental studies on gender and racial bias in generative AI, safety in large language models (LLMs), content moderation in media, misinformation detection, and political ideological leanings in LLMs. Her work bridges technical innovation with ethical inquiry, advancing fairness, safety, and interpretability in AI systems.</p>
+            <div class="about-layout">
+                <figure class="about-photo">
+                    <img src="images/photo.jpg" alt="Portrait of Nouar AlDahoul" width="300" height="375"
+                         onerror="this.parentNode.classList.add('no-photo')">
+                    <span class="monogram" aria-hidden="true">NA</span>
+                </figure>
+                <div class="about-body">
+                    <p>Nouar AlDahoul is a Research Scientist at New York University Abu Dhabi (NYUAD), specializing in artificial intelligence, environmental modeling, healthcare applications, and computational social science. She received her Ph.D. in Engineering from the International Islamic University Malaysia in 2019. She previously served as a postdoctoral associate at NYUAD, where she led experimental studies on gender and racial bias in generative AI, safety in large language models (LLMs), content moderation in media, misinformation detection, and political ideological leanings in LLMs. Her work bridges technical innovation with ethical inquiry, advancing fairness, safety, and interpretability in AI systems.</p>
             <p>In parallel with her research, Nouar has worked extensively as a trainer with Tertiary Courses Malaysia and Iverson Malaysia, delivering over 60 workshops to individuals, academic groups, and corporate teams. Her sessions cover AI, machine learning, natural language processing, computer vision, the Internet of Things (IoT), and LLMs, with an emphasis on hands-on learning, conceptual clarity, and real-world application.</p>
             <ul class="interests" aria-label="Research interests">
                 <li>Machine Learning</li>
@@ -391,6 +604,51 @@
                 <li>Generative AI &amp; LLMs</li>
                 <li>Computational Social Science</li>
                 <li>Internet of Things</li>
+            </ul>
+                </div>
+                <a class="gallery-shortcut" href="#gallery" aria-label="Open the figure gallery">
+                    <span class="gs-thumb">
+                        <img alt="" referrerpolicy="no-referrer" hidden>
+                        <span class="gs-icon" aria-hidden="true"><i class="fa-solid fa-images"></i></span>
+                    </span>
+                    <span class="gs-title">Gallery</span>
+                    <span class="gs-sub">Figures from my papers</span>
+                </a>
+            </div>
+        </section>
+
+        <section id="news">
+            <h2>News</h2>
+            <ul class="entries news">
+                <li class="entry">
+                    <div class="when">2026</div>
+                    <div>
+                        <details class="news-item">
+                            <summary>
+                                <span class="entry-title">Excited to share NYUAD team’s performance at the ImageEval Shared Task (Culturally Grounded Arabic Visual Question Answering and Hallucination Detection) in the ArabicNLP conference.</span>
+                                <span class="news-more"><span class="more-label">Show details</span> <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></span>
+                            </summary>
+                            <div class="news-details">
+                                <p>Excited to share NYUAD team’s performance at the ImageEval Shared Task (Culturally Grounded Arabic Visual Question Answering and Hallucination Detection) in the ArabicNLP conference! 🚀</p>
+                                <p>The team achieved top-tier results across multimodal evaluation benchmarks in both Modern Standard Arabic (MSA) and English.</p>
+                                <p>The results table is sourced from the <a href="https://lnkd.in/duu3jNf7" target="_blank" rel="noopener noreferrer">ImageEval shared task paper</a>.</p>
+                                <p>For more details, see the <a href="https://lnkd.in/dHsQM2yv" target="_blank" rel="noopener noreferrer">NYUAD system description paper</a>.</p>
+                            </div>
+                        </details>
+                    </div>
+                </li>
+                <li class="entry">
+                    <div class="when">2026</div>
+                    <div>
+                        <div class="entry-title">Paper under review: <a href="https://arxiv.org/abs/2608.05178" target="_blank" rel="noopener noreferrer">Who Gets Access? Global Region and Academic Status Bias in AI-Generated Academic Gatekeeping Scenarios</a></div>
+                    </div>
+                </li>
+                <li class="entry">
+                    <div class="when">2026</div>
+                    <div>
+                        <div class="entry-title">Paper under review: <a href="https://ssrn.com/abstract=6900538" target="_blank" rel="noopener noreferrer">Predicting the Pitch or Repeating the Public? Large Language Models and Sports Consensus Bias in the FIFA World Cup 2026</a></div>
+                    </div>
+                </li>
             </ul>
         </section>
 
@@ -580,7 +838,7 @@
                     <div>
                         <div class="entry-title"><a href="https://arxiv.org/abs/2608.05178" target="_blank" rel="noopener noreferrer">Who Gets Access? Global Region and Academic Status Bias in AI-Generated Academic Gatekeeping Scenarios</a></div>
                         <div class="authors"><strong>AlDahoul, N.</strong>, Karim, H. A., &amp; Tan, M. J. T.</div>
-                        <div class="venue">arXiv:2608.05178</div>
+                        <div class="venue">arXiv:2608.05178 (under review)</div>
                         <p class="entry-desc">Investigates geographical and status biases when LLM agents act as gatekeepers in simulated academic selection processes.</p>
                     </div>
                 </li>
@@ -589,7 +847,7 @@
                     <div>
                         <div class="entry-title"><a href="https://ssrn.com/abstract=6900538" target="_blank" rel="noopener noreferrer">Predicting the Pitch or Repeating the Public? Large Language Models and Sports Consensus Bias in the FIFA World Cup 2026</a></div>
                         <div class="authors"><strong>AlDahoul, N.</strong>, Karim, H. A., &amp; Tan, M. J. T.</div>
-                        <div class="venue">SSRN 6900538</div>
+                        <div class="venue">SSRN 6900538 (under review)</div>
                         <p class="entry-desc">Analyzes whether LLMs make independent predictions or mirror public consensus in sports forecasting.</p>
                     </div>
                 </li>
@@ -634,12 +892,12 @@
 
         <section id="gallery">
             <h2>Gallery</h2>
-            <p class="gallery-intro">Selected figures from my papers. Select a figure to open the paper it comes from.</p>
+            <p class="gallery-intro">Figures from my papers, grouped by paper. Select any figure to open the paper it comes from.</p>
             <button class="gallery-toggle" type="button" aria-expanded="false" aria-controls="gallery-grid">
                 <span class="label">Show figures</span>
                 <i class="fa-solid fa-chevron-down chev" aria-hidden="true"></i>
             </button>
-            <ul class="gallery-grid" id="gallery-grid" hidden></ul>
+            <div class="gallery-groups" id="gallery-grid" hidden></div>
             <p class="gallery-empty" hidden>Figures could not be loaded right now. Please try again later.</p>
         </section>
 
@@ -653,90 +911,147 @@
 <script>
 (function () {
     /* Figures load straight from the publishers (Springer Nature, arXiv).
-       Each entry tries its sources in order; a figure that cannot load is hidden. */
-    var figures = [
-        { caption: "FaceScanPaliGemma: multi-agent VLMs for facial attributes", paper: "Fig. 1 · Scientific Reports, 2026", url: "https://doi.org/10.1038/s41598-026-39584-3", srcs: ["https://media.springernature.com/lw685/springer-static/image/art%3A10.1038%2Fs41598-026-39584-3/MediaObjects/41598_2026_39584_Fig1_HTML.png", "https://arxiv.org/html/2410.24148v1/x1.png"] },
-        { caption: "FaceScanPaliGemma: multi-agent VLMs for facial attributes", paper: "Fig. 2 · Scientific Reports, 2026", url: "https://doi.org/10.1038/s41598-026-39584-3", srcs: ["https://media.springernature.com/lw685/springer-static/image/art%3A10.1038%2Fs41598-026-39584-3/MediaObjects/41598_2026_39584_Fig2_HTML.png", "https://arxiv.org/html/2410.24148v1/x2.png"] },
-        { caption: "AI-generated faces, gender stereotypes and racial homogenization", paper: "Fig. 1 · Scientific Reports, 2025", url: "https://doi.org/10.1038/s41598-025-99623-3", srcs: ["https://media.springernature.com/lw685/springer-static/image/art%3A10.1038%2Fs41598-025-99623-3/MediaObjects/41598_2025_99623_Fig1_HTML.png", "https://arxiv.org/html/2402.01002v1/x1.png"] },
-        { caption: "AI-generated faces, gender stereotypes and racial homogenization", paper: "Fig. 2 · Scientific Reports, 2025", url: "https://doi.org/10.1038/s41598-025-99623-3", srcs: ["https://media.springernature.com/lw685/springer-static/image/art%3A10.1038%2Fs41598-025-99623-3/MediaObjects/41598_2025_99623_Fig2_HTML.png", "https://arxiv.org/html/2402.01002v1/x2.png"] },
-        { caption: "Guardians of Digital Safety: LLMs against online toxicity", paper: "Fig. 1 · Journal of Big Data, 2025", url: "https://doi.org/10.1186/s40537-025-01336-x", srcs: ["https://media.springernature.com/lw685/springer-static/image/art%3A10.1186%2Fs40537-025-01336-x/MediaObjects/40537_2025_1336_Fig1_HTML.png"] },
-        { caption: "Guardians of Digital Safety: LLMs against online toxicity", paper: "Fig. 2 · Journal of Big Data, 2025", url: "https://doi.org/10.1186/s40537-025-01336-x", srcs: ["https://media.springernature.com/lw685/springer-static/image/art%3A10.1186%2Fs40537-025-01336-x/MediaObjects/40537_2025_1336_Fig2_HTML.png"] },
-        { caption: "Towards a World Wide Web powered by generative AI", paper: "Fig. 1 · Scientific Reports, 2025", url: "https://doi.org/10.1038/s41598-024-77301-0", srcs: ["https://media.springernature.com/lw685/springer-static/image/art%3A10.1038%2Fs41598-024-77301-0/MediaObjects/41598_2024_77301_Fig1_HTML.png"] },
-        { caption: "Towards a World Wide Web powered by generative AI", paper: "Fig. 2 · Scientific Reports, 2025", url: "https://doi.org/10.1038/s41598-024-77301-0", srcs: ["https://media.springernature.com/lw685/springer-static/image/art%3A10.1038%2Fs41598-024-77301-0/MediaObjects/41598_2024_77301_Fig2_HTML.png"] },
-        { caption: "Multitask-Bench: safety gaps in LLM fine-tuning", paper: "Fig. 1 · COLING 2025", url: "https://aclanthology.org/2025.coling-main.606/", srcs: ["https://arxiv.org/html/2409.15361v1/x1.png"] },
-        { caption: "Who Gets Access? Bias in AI academic gatekeeping", paper: "Fig. 1 · arXiv preprint, 2026", url: "https://arxiv.org/abs/2608.05178", srcs: ["https://arxiv.org/html/2608.05178v1/x1.png"] },
-        { caption: "LLMs are often politically extreme and ideologically inconsistent", paper: "Fig. 1 · arXiv preprint, 2025", url: "https://arxiv.org/abs/2505.04171", srcs: ["https://arxiv.org/html/2505.04171v1/x1.png"] },
-        { caption: "Advancing content moderation with LLMs", paper: "Fig. 1 · arXiv preprint, 2024", url: "https://arxiv.org/abs/2411.17123", srcs: ["https://arxiv.org/html/2411.17123v1/x1.png"] },
-        { caption: "Self-reflection makes LLMs safer and less biased", paper: "Fig. 1 · arXiv preprint, 2024", url: "https://arxiv.org/abs/2406.10400", srcs: ["https://arxiv.org/html/2406.10400v1/x1.png"] },
-        { caption: "Inclusive content reduces racial and gender biases", paper: "Fig. 1 · arXiv preprint, 2024", url: "https://arxiv.org/abs/2405.06404", srcs: ["https://arxiv.org/html/2405.06404v2/x1.png"] },
-        { caption: "Inclusive content reduces racial and gender biases", paper: "Fig. 3 · arXiv preprint, 2024", url: "https://arxiv.org/abs/2405.06404", srcs: ["https://arxiv.org/html/2405.06404v2/x3.png"] }
+       For each paper, the first source whose Figure 1 loads is used, then
+       figures 1..MAX_FIGS are requested; any number that does not exist is hidden. */
+    var MAX_FIGS = 15;
+    var papers = [
+        { title: "FaceScanPaliGemma multi-agent vision language models for facial attribute recognition", venue: "Scientific Reports, 2026", url: "https://doi.org/10.1038/s41598-026-39584-3", sources: ["https://media.springernature.com/lw685/springer-static/image/art%3A10.1038%2Fs41598-026-39584-3/MediaObjects/41598_2026_39584_Fig{n}_HTML.png", "https://arxiv.org/html/2410.24148v1/x{n}.png"] },
+        { title: "AI-generated faces influence gender stereotypes and racial homogenization", venue: "Scientific Reports, 2025", url: "https://doi.org/10.1038/s41598-025-99623-3", sources: ["https://media.springernature.com/lw685/springer-static/image/art%3A10.1038%2Fs41598-025-99623-3/MediaObjects/41598_2025_99623_Fig{n}_HTML.png", "https://arxiv.org/html/2402.01002v1/x{n}.png"] },
+        { title: "Guardians of Digital Safety: Benchmarking Large Language Models in the Fight Against Online Toxicity", venue: "Journal of Big Data, 2025", url: "https://doi.org/10.1186/s40537-025-01336-x", sources: ["https://media.springernature.com/lw685/springer-static/image/art%3A10.1186%2Fs40537-025-01336-x/MediaObjects/40537_2025_1336_Fig{n}_HTML.png"] },
+        { title: "Towards a World Wide Web powered by generative AI", venue: "Scientific Reports, 2025", url: "https://doi.org/10.1038/s41598-024-77301-0", sources: ["https://media.springernature.com/lw685/springer-static/image/art%3A10.1038%2Fs41598-024-77301-0/MediaObjects/41598_2024_77301_Fig{n}_HTML.png"] },
+        { title: "Multitask-Bench: Unveiling and Mitigating Safety Gaps in LLMs Fine-tuning", venue: "COLING 2025", url: "https://aclanthology.org/2025.coling-main.606/", sources: ["https://arxiv.org/html/2409.15361v1/x{n}.png"] },
+        { title: "Who Gets Access? Global Region and Academic Status Bias in AI-Generated Academic Gatekeeping Scenarios", venue: "arXiv preprint, 2026", url: "https://arxiv.org/abs/2608.05178", sources: ["https://arxiv.org/html/2608.05178v1/x{n}.png"] },
+        { title: "Large Language Models are often politically extreme, usually ideologically inconsistent, and persuasive even in informational contexts", venue: "arXiv preprint, 2025", url: "https://arxiv.org/abs/2505.04171", sources: ["https://arxiv.org/html/2505.04171v1/x{n}.png"] },
+        { title: "Advancing Content Moderation: Evaluating Large Language Models for Detecting Sensitive Content Across Text, Images, and Videos", venue: "arXiv preprint, 2024", url: "https://arxiv.org/abs/2411.17123", sources: ["https://arxiv.org/html/2411.17123v1/x{n}.png"] },
+        { title: "Self-Reflection Makes Large Language Models Safer, Less Biased, and Ideologically Neutral", venue: "arXiv preprint, 2024", url: "https://arxiv.org/abs/2406.10400", sources: ["https://arxiv.org/html/2406.10400v1/x{n}.png"] },
+        { title: "Inclusive content reduces racial and gender biases, yet non-inclusive content dominates popular culture", venue: "arXiv preprint, 2024", url: "https://arxiv.org/abs/2405.06404", sources: ["https://arxiv.org/html/2405.06404v2/x{n}.png"] }
     ];
 
-    var grid = document.getElementById("gallery-grid");
+    var container = document.getElementById("gallery-grid");
     var toggle = document.querySelector(".gallery-toggle");
     var label = toggle.querySelector(".label");
     var empty = document.querySelector(".gallery-empty");
     var built = false;
+    var pending = 0;
 
-    function checkEmpty() {
-        var visible = grid.querySelectorAll("li:not([hidden])").length;
-        var pending = grid.querySelectorAll("li[data-pending]").length;
-        if (pending === 0) empty.hidden = visible > 0 || grid.hidden;
+    function settle() {
+        pending -= 1;
+        if (pending === 0 && !container.hidden) {
+            empty.hidden = container.querySelectorAll(".fig-group:not([hidden])").length > 0;
+        }
     }
 
-    function build() {
-        figures.forEach(function (f) {
-            var li = document.createElement("li");
-            li.setAttribute("data-pending", "");
+    function makeGroup(p) {
+        var group = document.createElement("section");
+        group.className = "fig-group";
+        group.hidden = true;
 
-            var a = document.createElement("a");
-            a.className = "fig-card";
-            a.href = f.url;
-            a.target = "_blank";
-            a.rel = "noopener noreferrer";
+        var h = document.createElement("h3");
+        h.className = "fig-group-title";
+        var a = document.createElement("a");
+        a.href = p.url; a.target = "_blank"; a.rel = "noopener noreferrer";
+        a.textContent = p.title;
+        h.appendChild(a);
 
-            var media = document.createElement("div");
-            media.className = "fig-media";
-            var img = document.createElement("img");
-            img.alt = f.caption;
-            img.decoding = "async";
-            var i = 0;
-            img.referrerPolicy = "no-referrer";
-            img.onload = function () { li.removeAttribute("data-pending"); checkEmpty(); };
-            img.onerror = function () {
-                i += 1;
-                if (i < f.srcs.length) { img.src = f.srcs[i]; return; }
-                li.hidden = true; li.removeAttribute("data-pending"); checkEmpty();
+        var v = document.createElement("div");
+        v.className = "fig-group-venue";
+        v.textContent = p.venue;
+
+        var ul = document.createElement("ul");
+        ul.className = "gallery-grid";
+
+        group.appendChild(h); group.appendChild(v); group.appendChild(ul);
+        container.appendChild(group);
+        return { group: group, list: ul };
+    }
+
+    function addFigure(p, g, pattern, n) {
+        var li = document.createElement("li");
+        li.hidden = true;
+
+        var a = document.createElement("a");
+        a.className = "fig-card";
+        a.href = p.url; a.target = "_blank"; a.rel = "noopener noreferrer";
+
+        var media = document.createElement("div");
+        media.className = "fig-media";
+        var img = document.createElement("img");
+        img.alt = "Figure " + n + " from " + p.title;
+        img.decoding = "async";
+        img.referrerPolicy = "no-referrer";
+
+        var text = document.createElement("div");
+        text.className = "fig-text";
+        var cap = document.createElement("div");
+        cap.className = "fig-caption";
+        cap.textContent = "Figure " + n;
+        text.appendChild(cap);
+
+        media.appendChild(img);
+        a.appendChild(media); a.appendChild(text);
+        li.appendChild(a);
+        g.list.appendChild(li);
+
+        pending += 1;
+        img.onload = function () { li.hidden = false; g.group.hidden = false; settle(); };
+        img.onerror = function () { li.remove(); settle(); };
+        img.src = pattern.replace("{n}", n);
+    }
+
+    function loadPaper(p) {
+        var g = makeGroup(p);
+        var k = 0;
+        function trySource() {
+            if (k >= p.sources.length) { g.group.remove(); settle(); return; }
+            var pattern = p.sources[k];
+            var probe = new Image();
+            probe.referrerPolicy = "no-referrer";
+            probe.onload = function () {
+                for (var n = 1; n <= MAX_FIGS; n++) addFigure(p, g, pattern, n);
+                settle();
             };
-            img.src = f.srcs[0];
-            media.appendChild(img);
-
-            var text = document.createElement("div");
-            text.className = "fig-text";
-            var cap = document.createElement("div");
-            cap.className = "fig-caption";
-            cap.textContent = f.caption;
-            var paper = document.createElement("div");
-            paper.className = "fig-paper";
-            paper.textContent = f.paper;
-            text.appendChild(cap);
-            text.appendChild(paper);
-
-            a.appendChild(media);
-            a.appendChild(text);
-            li.appendChild(a);
-            grid.appendChild(li);
-        });
-        built = true;
+            probe.onerror = function () { k += 1; trySource(); };
+            probe.src = pattern.replace("{n}", 1);
+        }
+        pending += 1;
+        trySource();
     }
 
     toggle.addEventListener("click", function () {
         var open = toggle.getAttribute("aria-expanded") === "true";
-        if (!built) build();
         toggle.setAttribute("aria-expanded", String(!open));
-        grid.hidden = open;
+        container.hidden = open;
         label.textContent = open ? "Show figures" : "Hide figures";
-        if (open) { empty.hidden = true; } else { checkEmpty(); }
+        if (!built) { built = true; papers.forEach(loadPaper); }
+        if (open) { empty.hidden = true; }
+        else if (pending === 0) {
+            empty.hidden = container.querySelectorAll(".fig-group:not([hidden])").length > 0;
+        }
+    });
+    /* Gallery shortcut next to the bio: thumbnail from the first figure that loads */
+    var shortcut = document.querySelector(".gallery-shortcut");
+    var thumbBox = shortcut.querySelector(".gs-thumb");
+    var thumb = thumbBox.querySelector("img");
+    var thumbSources = papers.map(function (p) { return p.sources[0].replace("{n}", 1); });
+    var t = 0;
+    thumb.onload = function () { thumb.hidden = false; };
+    thumb.onerror = function () {
+        t += 1;
+        if (t < thumbSources.length) { thumb.src = thumbSources[t]; }
+        else { thumbBox.classList.add("no-thumb"); }
+    };
+    thumb.src = thumbSources[0];
+
+    shortcut.addEventListener("click", function (e) {
+        e.preventDefault();
+        if (toggle.getAttribute("aria-expanded") !== "true") toggle.click();
+        document.getElementById("gallery").scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+    });
+    /* News: switch "Show details" / "Hide details" */
+    document.querySelectorAll(".news-item").forEach(function (d) {
+        d.addEventListener("toggle", function () {
+            d.querySelector(".more-label").textContent = d.open ? "Hide details" : "Show details";
+        });
     });
 })();
 </script>
