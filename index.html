@@ -216,11 +216,32 @@
             border-radius: 10px;
             border: 1px solid var(--border);
             border-left: 4px solid var(--nyu-purple);
-            transition: transform 0.2s ease;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
         }
 
         .pub-item:hover {
             transform: translateX(4px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-left-color: var(--nyu-hover);
+        }
+
+        .pub-item::after {
+            content: "View Figures \f06e";
+            font-family: "Font Awesome 6 Free", -apple-system, sans-serif;
+            font-weight: 900;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 0.8rem;
+            color: var(--nyu-purple);
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .pub-item:hover::after {
+            opacity: 1;
         }
 
         .pub-title {
@@ -228,6 +249,7 @@
             font-size: 1.08rem;
             line-height: 1.45;
             margin-bottom: 6px;
+            padding-right: 90px;
         }
 
         .pub-title a {
@@ -273,6 +295,99 @@
             line-height: 1.5;
         }
 
+        /* Modal Overlay for Figures */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-card {
+            background: #ffffff;
+            width: 100%;
+            max-width: 800px;
+            max-height: 90vh;
+            border-radius: 12px;
+            overflow-y: auto;
+            padding: 30px;
+            position: relative;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 18px;
+            right: 20px;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .modal-close:hover {
+            color: var(--nyu-purple);
+        }
+
+        .modal-paper-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            padding-right: 30px;
+            color: var(--text-primary);
+        }
+
+        .modal-paper-meta {
+            font-size: 0.9rem;
+            color: var(--nyu-purple);
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .figures-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            margin-top: 20px;
+        }
+
+        .figure-item {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            background: #f8fafc;
+        }
+
+        .figure-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            object-fit: contain;
+            background: #ffffff;
+            border: 1px solid var(--border);
+        }
+
+        .figure-caption {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            margin-top: 10px;
+            line-height: 1.4;
+        }
+
         footer {
             margin-top: 60px;
             padding-top: 24px;
@@ -290,6 +405,12 @@
             }
             .container {
                 padding: 30px 16px;
+            }
+            .pub-title {
+                padding-right: 0;
+            }
+            .pub-item::after {
+                display: none;
             }
         }
     </style>
@@ -418,9 +539,9 @@
                 </div>
                 <div class="pub-list">
 
-                    <div class="pub-item">
+                    <div class="pub-item" data-paper-id="guardians">
                         <div class="pub-title">
-                            <a href="https://doi.org/10.1186/s40537-025-01336-x" target="_blank" rel="noopener noreferrer">
+                            <a href="https://doi.org/10.1186/s40537-025-01336-x" target="_blank" onclick="event.stopPropagation();">
                                 Guardians of Digital Safety: Benchmarking Large Language Models in the Fight Against Online Toxicity
                             </a>
                         </div>
@@ -431,43 +552,17 @@
                         <div class="pub-desc">Benchmarking large language models and evaluation frameworks for mitigating online toxicity and safe AI deployments.</div>
                     </div>
 
-                    <div class="pub-item">
+                    <div class="pub-item" data-paper-id="aifaces">
                         <div class="pub-title">
-                            <a href="https://arxiv.org/abs/2402.01002" target="_blank" rel="noopener noreferrer">
+                            <a href="https://doi.org/10.1038/s41598-025-14449-x" target="_blank" onclick="event.stopPropagation();">
                                 AI-generated faces influence gender stereotypes and racial homogenization
                             </a>
                         </div>
                         <div class="pub-authors"><strong>AlDahoul, N.</strong>, Rahwan, T., &amp; Zaki, Y.</div>
                         <div class="pub-meta">
-                            <span class="pub-venue">Scientific Reports / arXiv:2402.01002</span>
+                            <span class="pub-venue">Scientific Reports</span>
                         </div>
                         <div class="pub-desc">Proposing debiasing solutions that allow users to specify desired distributions of race and gender when generating images while minimizing racial homogenization.</div>
-                    </div>
-
-                    <div class="pub-item">
-                        <div class="pub-title">
-                            <a href="https://doi.org/10.1038/s41598-022-24314-2" target="_blank" rel="noopener noreferrer">
-                                RGB-D Based Multi-Modal Deep Learning for Spacecraft and Debris Recognition
-                            </a>
-                        </div>
-                        <div class="pub-authors"><strong>AlDahoul, N.</strong>, et al.</div>
-                        <div class="pub-meta">
-                            <span class="pub-venue">Scientific Reports</span>
-                        </div>
-                        <div class="pub-desc">Applying deep learning visual recognition models for orbital object safety and space debris identification.</div>
-                    </div>
-
-                    <div class="pub-item">
-                        <div class="pub-title">
-                            <a href="https://doi.org/10.1038/s41598-021-87413-x" target="_blank" rel="noopener noreferrer">
-                                Suspended Sediment Load Prediction Using Long Short-Term Memory Neural Network
-                            </a>
-                        </div>
-                        <div class="pub-authors"><strong>AlDahoul, N.</strong>, et al.</div>
-                        <div class="pub-meta">
-                            <span class="pub-venue">Scientific Reports</span>
-                        </div>
-                        <div class="pub-desc">Predictive modeling using recurrent neural architectures for environmental dynamics.</div>
                     </div>
 
                 </div>
@@ -481,9 +576,9 @@
                 </div>
                 <div class="pub-list">
 
-                    <div class="pub-item">
+                    <div class="pub-item" data-paper-id="gatekeeping">
                         <div class="pub-title">
-                            <a href="https://arxiv.org/abs/2608.05178" target="_blank" rel="noopener noreferrer">
+                            <a href="https://arxiv.org/abs/2608.05178" target="_blank" onclick="event.stopPropagation();">
                                 Who Gets Access? Global Region and Academic Status Bias in AI-Generated Academic Gatekeeping Scenarios
                             </a>
                         </div>
@@ -494,9 +589,9 @@
                         <div class="pub-desc">Investigating systemic geographical and status biases when LLM agents act as gatekeepers in simulated academic selection processes.</div>
                     </div>
 
-                    <div class="pub-item">
+                    <div class="pub-item" data-paper-id="political">
                         <div class="pub-title">
-                            <a href="https://arxiv.org/abs/2505.04171" target="_blank" rel="noopener noreferrer">
+                            <a href="https://arxiv.org/abs/2505.04171" target="_blank" onclick="event.stopPropagation();">
                                 Large Language Models are often politically extreme, usually ideologically inconsistent, and persuasive even in informational contexts
                             </a>
                         </div>
@@ -507,9 +602,9 @@
                         <div class="pub-desc">Analyzing the political ideology, consistency, and persuasive characteristics of LLMs in informational environments.</div>
                     </div>
 
-                    <div class="pub-item">
+                    <div class="pub-item" data-paper-id="facescan">
                         <div class="pub-title">
-                            <a href="https://arxiv.org/abs/2410.24148" target="_blank" rel="noopener noreferrer">
+                            <a href="https://arxiv.org/abs/2410.24148" target="_blank" onclick="event.stopPropagation();">
                                 Exploring Vision Language Models for Facial Attribute Recognition: Emotion, Race, Gender, and Age (FaceScanPaliGemma)
                             </a>
                         </div>
@@ -520,9 +615,9 @@
                         <div class="pub-desc">Evaluating vision-language model capabilities (including FaceScanPaliGemma) for multi-attribute facial recognition tasks across demographic dimensions.</div>
                     </div>
 
-                    <div class="pub-item">
+                    <div class="pub-item" data-paper-id="www">
                         <div class="pub-title">
-                            <a href="https://arxiv.org/abs/2310.17370" target="_blank" rel="noopener noreferrer">
+                            <a href="https://arxiv.org/abs/2310.17370" target="_blank" onclick="event.stopPropagation();">
                                 Towards a World Wide Web powered by generative AI
                             </a>
                         </div>
@@ -533,9 +628,9 @@
                         <div class="pub-desc">Exploring the future integration and architecture of generative AI models within web systems and user browsing experiences.</div>
                     </div>
 
-                    <div class="pub-item">
+                    <div class="pub-item" data-paper-id="moderation">
                         <div class="pub-title">
-                            <a href="https://arxiv.org/abs/2411.17123" target="_blank" rel="noopener noreferrer">
+                            <a href="https://arxiv.org/abs/2411.17123" target="_blank" onclick="event.stopPropagation();">
                                 Advancing Content Moderation: Evaluating Large Language Models for Detecting Sensitive Content Across Text, Images, and Videos
                             </a>
                         </div>
@@ -546,9 +641,9 @@
                         <div class="pub-desc">Comprehensive evaluation of LLMs and vision-language models for multimodal content moderation across text, images, and videos.</div>
                     </div>
 
-                    <div class="pub-item">
+                    <div class="pub-item" data-paper-id="sports">
                         <div class="pub-title">
-                            <a href="https://ssrn.com/abstract=6900538" target="_blank" rel="noopener noreferrer">
+                            <a href="https://ssrn.com/abstract=6900538" target="_blank" onclick="event.stopPropagation();">
                                 Predicting the Pitch or Repeating the Public? Large Language Models and Sports Consensus Bias in the FIFA World Cup 2026
                             </a>
                         </div>
@@ -559,9 +654,9 @@
                         <div class="pub-desc">Analyzing whether LLMs form independent predictive abilities or merely mirror public consensus biases in sports forecasting.</div>
                     </div>
 
-                    <div class="pub-item">
+                    <div class="pub-item" data-paper-id="reflection">
                         <div class="pub-title">
-                            <a href="https://arxiv.org/abs/2406.10400" target="_blank" rel="noopener noreferrer">
+                            <a href="https://arxiv.org/abs/2406.10400" target="_blank" onclick="event.stopPropagation();">
                                 Self-Reflection Makes Large Language Models Safer, Less Biased, and Ideologically Neutral
                             </a>
                         </div>
@@ -582,5 +677,139 @@
 
     </div>
 
+    <!-- Modal for Showing Paper Figures -->
+    <div class="modal-overlay" id="figureModal">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h3 class="modal-paper-title" id="modalTitle">Paper Figures</h3>
+            <div class="modal-paper-meta" id="modalMeta"></div>
+            <p class="about-text" id="modalDesc" style="font-size: 0.95rem;"></p>
+            <div class="figures-gallery" id="modalGallery">
+                <!-- Dynamic figures loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Paper Data containing image URLs and figure descriptions
+        const paperData = {
+            "guardians": {
+                title: "Guardians of Digital Safety: Benchmarking Large Language Models in the Fight Against Online Toxicity",
+                venue: "Journal of Big Data",
+                desc: "Benchmarking large language models and evaluation frameworks for mitigating online toxicity and safe AI deployments.",
+                figures: [
+                    { src: "figures/guardians_fig1.png", caption: "Figure 1: Toxicity detection accuracy across baseline models." },
+                    { src: "figures/guardians_fig2.png", caption: "Figure 2: Evaluation methodology for online toxicity alignment." }
+                ]
+            },
+            "aifaces": {
+                title: "AI-generated faces influence gender stereotypes and racial homogenization",
+                venue: "Scientific Reports",
+                desc: "Proposing debiasing solutions that allow users to specify desired distributions of race and gender when generating images while minimizing racial homogenization.",
+                figures: [
+                    { src: "figures/aifaces_fig1.png", caption: "Figure 1: Racial and gender distribution analysis in AI image generation." },
+                    { src: "figures/aifaces_fig2.png", caption: "Figure 2: Proposed debiasing framework pipeline." }
+                ]
+            },
+            "gatekeeping": {
+                title: "Who Gets Access? Global Region and Academic Status Bias in AI-Generated Academic Gatekeeping Scenarios",
+                venue: "arXiv:2608.05178",
+                desc: "Investigating systemic geographical and status biases when LLM agents act as gatekeepers in simulated academic selection processes.",
+                figures: [
+                    { src: "figures/gatekeeping_fig1.png", caption: "Figure 1: Academic gatekeeping decision distribution across geographic regions." }
+                ]
+            },
+            "political": {
+                title: "Large Language Models are often politically extreme, usually ideologically inconsistent, and persuasive even in informational contexts",
+                venue: "arXiv:2505.04171",
+                desc: "Analyzing the political ideology, consistency, and persuasive characteristics of LLMs in informational environments.",
+                figures: [
+                    { src: "figures/political_fig1.png", caption: "Figure 1: Political compass alignment spectrum across state-of-the-art LLMs." }
+                ]
+            },
+            "facescan": {
+                title: "Exploring Vision Language Models for Facial Attribute Recognition: Emotion, Race, Gender, and Age (FaceScanPaliGemma)",
+                venue: "arXiv:2410.24148",
+                desc: "Evaluating vision-language model capabilities (including FaceScanPaliGemma) for multi-attribute facial recognition tasks across demographic dimensions.",
+                figures: [
+                    { src: "figures/facescan_fig1.png", caption: "Figure 1: FaceScanPaliGemma model architecture and attribute recognition pipeline." }
+                ]
+            },
+            "www": {
+                title: "Towards a World Wide Web powered by generative AI",
+                venue: "arXiv:2310.17370",
+                desc: "Exploring the future integration and architecture of generative AI models within web systems and user browsing experiences.",
+                figures: [
+                    { src: "figures/www_fig1.png", caption: "Figure 1: Generative AI web architecture comparison." }
+                ]
+            },
+            "moderation": {
+                title: "Advancing Content Moderation: Evaluating Large Language Models for Detecting Sensitive Content Across Text, Images, and Videos",
+                venue: "arXiv:2411.17123",
+                desc: "Comprehensive evaluation of LLMs and vision-language models for multimodal content moderation across text, images, and videos.",
+                figures: [
+                    { src: "figures/moderation_fig1.png", caption: "Figure 1: Multimodal content moderation framework." }
+                ]
+            },
+            "sports": {
+                title: "Predicting the Pitch or Repeating the Public? Large Language Models and Sports Consensus Bias in the FIFA World Cup 2026",
+                venue: "SSRN 6900538",
+                desc: "Analyzing whether LLMs form independent predictive abilities or merely mirror public consensus biases in sports forecasting.",
+                figures: [
+                    { src: "figures/sports_fig1.png", caption: "Figure 1: LLM forecasting accuracy vs public consensus polls." }
+                ]
+            },
+            "reflection": {
+                title: "Self-Reflection Makes Large Language Models Safer, Less Biased, and Ideologically Neutral",
+                venue: "arXiv:2406.10400",
+                desc: "Proposes a self-reflection framework enabling LLMs to self-correct toxic behaviors, reduce inherent biases, and achieve ideological neutrality without heavy fine-tuning.",
+                figures: [
+                    { src: "figures/reflection_fig1.png", caption: "Figure 1: Self-reflection iteration process and bias reduction." }
+                ]
+            }
+        };
+
+        // Attach Click Listener to all publication items
+        document.querySelectorAll('.pub-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const paperId = this.getAttribute('data-paper-id');
+                const data = paperData[paperId];
+                
+                if (data) {
+                    document.getElementById('modalTitle').innerText = data.title;
+                    document.getElementById('modalMeta').innerText = data.venue;
+                    document.getElementById('modalDesc').innerText = data.desc;
+                    
+                    const gallery = document.getElementById('modalGallery');
+                    gallery.innerHTML = '';
+                    
+                    data.figures.forEach(fig => {
+                        const figDiv = document.createElement('div');
+                        figDiv.className = 'figure-item';
+                        figDiv.innerHTML = `
+                            <img src="${fig.src}" alt="${fig.caption}" onerror="this.src='https://via.placeholder.com/800x450?text=Paper+Figure+Placeholder';">
+                            <div class="figure-caption">${fig.caption}</div>
+                        `;
+                        gallery.appendChild(figDiv);
+                    });
+                    
+                    document.getElementById('figureModal').classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+
+        function closeModal() {
+            document.getElementById('figureModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal on clicking backdrop
+        document.getElementById('figureModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+    </script>
 </body>
 </html>
