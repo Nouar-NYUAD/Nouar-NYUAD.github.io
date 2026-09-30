@@ -7,196 +7,214 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-            --primary: #57068c; /* NYU Purple Accent */
-            --primary-light: #7020a3;
-            --dark: #0f172a;
-            --text: #334155;
-            --text-muted: #64748b;
-            --bg: #f8fafc;
-            --card-bg: #ffffff;
-            --border: #e2e8f0;
+            --bg: #ffffff;
+            --text: #1a1a1a;
+            --text-secondary: #555555;
+            --text-muted: #888888;
+            --accent: #57068c; /* NYU Purple */
+            --border: #eaeaea;
+            --tag-bg: #f5f5f7;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
         }
 
         body {
             background-color: var(--bg);
             color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 780px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 60px 20px 80px;
         }
 
-        /* Header / Hero Section */
+        /* Header / Profile */
         header {
-            background: linear-gradient(135deg, #1e1b2e 0%, var(--primary) 100%);
-            color: white;
-            padding: 60px 0 50px 0;
-            text-align: center;
+            margin-bottom: 50px;
         }
 
         .profile-title {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 700;
-            margin-bottom: 10px;
             letter-spacing: -0.5px;
+            color: var(--text);
+            margin-bottom: 6px;
         }
 
         .profile-subtitle {
-            font-size: 1.2rem;
-            color: #d8b4fe;
-            margin-bottom: 8px;
-            font-weight: 500;
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            margin-bottom: 6px;
         }
 
         .profile-affiliation {
-            font-size: 1rem;
-            color: #e2e8f0;
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        /* Social & Academic Links */
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .social-links a {
-            color: white;
-            background: rgba(255, 255, 255, 0.1);
-            text-decoration: none;
-            padding: 8px 18px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .social-links a:hover {
-            background: white;
-            color: var(--primary);
-            transform: translateY(-2px);
-        }
-
-        /* Content Layout */
-        main {
-            padding: 40px 0;
-        }
-
-        section {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-            border: 1px solid var(--border);
-        }
-
-        h2 {
-            color: var(--dark);
-            font-size: 1.5rem;
+            font-size: 0.95rem;
+            color: var(--text-muted);
             margin-bottom: 20px;
             display: flex;
             align-items: center;
-            gap: 10px;
-            border-bottom: 2px solid var(--bg);
+            gap: 6px;
+        }
+
+        /* Social & Academic Links */
+        .links-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding-top: 10px;
+        }
+
+        .links-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s ease;
+        }
+
+        .links-nav a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+
+        /* Section Layout */
+        section {
+            margin-bottom: 55px;
+        }
+
+        .section-num {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--text);
             padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 25px;
         }
 
-        h2 i {
-            color: var(--primary);
+        .about-text {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
         }
 
-        /* Research Interest Pills */
+        /* Research Interest Tags */
         .tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 15px;
+            gap: 8px;
+            margin-top: 20px;
         }
 
         .tag {
-            background: #f1f5f9;
-            color: var(--dark);
-            padding: 6px 14px;
-            border-radius: 6px;
-            font-size: 0.88rem;
+            background: var(--tag-bg);
+            color: var(--text-secondary);
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.82rem;
             font-weight: 500;
-            border: 1px solid #e2e8f0;
+            border: 1px solid var(--border);
         }
 
-        /* Grid for Education / Experience */
+        /* Timeline / Experience */
         .timeline {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 22px;
         }
 
         .timeline-item {
-            position: relative;
-            padding-left: 20px;
-            border-left: 2px solid #e2e8f0;
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 15px;
         }
 
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -6px;
-            top: 6px;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: var(--primary);
+        .timeline-date {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            padding-top: 2px;
         }
 
         .timeline-title {
             font-weight: 600;
-            color: var(--dark);
+            font-size: 1rem;
+            color: var(--text);
         }
 
-        .timeline-meta {
-            font-size: 0.85rem;
+        .timeline-org {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .timeline-desc {
+            font-size: 0.88rem;
             color: var(--text-muted);
-            margin-bottom: 5px;
+            line-height: 1.5;
         }
 
-        /* Publication Cards */
-        .pub-card {
-            padding: 15px 0;
-            border-bottom: 1px solid var(--border);
+        /* Publications */
+        .pub-list {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
         }
 
-        .pub-card:last-child {
-            border-bottom: none;
+        .pub-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
         }
 
         .pub-title {
             font-weight: 600;
-            color: var(--dark);
-            margin-bottom: 4px;
+            font-size: 1.02rem;
+            color: var(--text);
+            line-height: 1.4;
+            text-decoration: none;
+        }
+
+        .pub-authors {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .pub-authors strong {
+            color: var(--text);
+        }
+
+        .pub-meta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+            margin-top: 2px;
         }
 
         .pub-venue {
-            font-size: 0.9rem;
-            color: var(--primary);
+            font-style: italic;
+            color: var(--accent);
             font-weight: 500;
         }
 
@@ -204,33 +222,45 @@
             font-size: 0.88rem;
             color: var(--text-muted);
             margin-top: 4px;
+            line-height: 1.5;
         }
 
         /* Footer */
         footer {
-            text-align: center;
-            padding: 20px 0 40px;
+            margin-top: 80px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
             color: var(--text-muted);
-            font-size: 0.85rem;
+            font-size: 0.82rem;
+            text-align: center;
         }
 
-        @media (max-width: 600px) {
-            .profile-title { font-size: 2rem; }
-            section { padding: 20px; }
+        @media (max-width: 640px) {
+            .timeline-item {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+            .container {
+                padding: 40px 18px;
+            }
+            .profile-title {
+                font-size: 1.8rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Section -->
-    <header>
-        <div class="container">
+    <div class="container">
+
+        <!-- Header -->
+        <header>
             <h1 class="profile-title">Nouar AlDahoul</h1>
             <div class="profile-subtitle">AI Research Scientist</div>
             <div class="profile-affiliation">
                 <i class="fa-solid fa-building-columns"></i> New York University Abu Dhabi, UAE
             </div>
-            <div class="social-links">
+            <div class="links-nav">
                 <a href="https://scholar.google.com/citations?user=iZFxfAoAAAAJ" target="_blank">
                     <i class="fa-solid fa-graduation-cap"></i> Google Scholar
                 </a>
@@ -244,99 +274,138 @@
                     <i class="fa-solid fa-envelope"></i> Email
                 </a>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <main class="container">
-        
-        <!-- About Section -->
-        <section>
-            <h2><i class="fa-solid fa-user"></i> Biography</h2>
-            <p>
-                I am a Research Scientist in Computer Science at New York University Abu Dhabi (NYUAD). My research focuses on leveraging Machine Learning and Deep Learning to solve complex challenges across Computational Social Science, Computer Vision, and Digital Health.
-            </p>
-            <div class="tags">
-                <span class="tag">Machine Learning</span>
-                <span class="tag">Deep Learning</span>
-                <span class="tag">Computer Vision</span>
-                <span class="tag">Computational Social Science</span>
-                <span class="tag">Natural Language Processing</span>
-                <span class="tag">Generative AI & LLMs</span>
-                <span class="tag">Internet of Things (IoT)</span>
-            </div>
-        </section>
-
-        <!-- Academic & Work Timeline -->
-        <section>
-            <h2><i class="fa-solid fa-briefcase"></i> Experience & Education</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-title">Research Scientist</div>
-                    <div class="timeline-meta">New York University Abu Dhabi, UAE | 2026 - Present</div>
-                    <p>Conducting research in computational social science, and safety/bias in large language models.</p>
+        <main>
+            <!-- 01 About -->
+            <section id="about">
+                <div class="section-num">01</div>
+                <h2>About</h2>
+                <p class="about-text">
+                    I am a Research Scientist in Computer Science at New York University Abu Dhabi (NYUAD). My research focuses on leveraging Machine Learning and Deep Learning to solve complex challenges across Computational Social Science, Computer Vision, and Digital Health.
+                </p>
+                <div class="tags">
+                    <span class="tag">Machine Learning</span>
+                    <span class="tag">Deep Learning</span>
+                    <span class="tag">Computer Vision</span>
+                    <span class="tag">Computational Social Science</span>
+                    <span class="tag">Natural Language Processing</span>
+                    <span class="tag">Generative AI & LLMs</span>
+                    <span class="tag">Internet of Things (IoT)</span>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-title">Postdoctoral Associate</div>
-                    <div class="timeline-meta">New York University Abu Dhabi, UAE | 2022 - 2025</div>
-                    <p>Conducting research in machine learning applications, computational social science, and safety/bias in large language models.</p>
+            </section>
+
+            <!-- 02 Experience & Education -->
+            <section id="experience">
+                <div class="section-num">02</div>
+                <h2>Experience & Education</h2>
+                <div class="timeline">
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">2026 – Present</div>
+                        <div>
+                            <div class="timeline-title">Research Scientist</div>
+                            <div class="timeline-org">New York University Abu Dhabi, UAE</div>
+                            <div class="timeline-desc">Conducting research in computational social science, and safety/bias in large language models.</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">2022 – 2025</div>
+                        <div>
+                            <div class="timeline-title">Postdoctoral Associate</div>
+                            <div class="timeline-org">New York University Abu Dhabi, UAE</div>
+                            <div class="timeline-desc">Conducting research in machine learning applications, computational social science, and safety/bias in large language models.</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">2019 – 2021</div>
+                        <div>
+                            <div class="timeline-title">Senior Researcher</div>
+                            <div class="timeline-org">Faculty of Engineering, Multimedia University, Malaysia</div>
+                            <div class="timeline-desc">Researched deep learning applications for computer vision and signal processing.</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">Ph.D.</div>
+                        <div>
+                            <div class="timeline-title">Ph.D. in Engineering</div>
+                            <div class="timeline-org">International Islamic University Malaysia</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">M.Eng.</div>
+                        <div>
+                            <div class="timeline-title">M.Eng. in Robotics Engineering</div>
+                            <div class="timeline-org">Damascus University, Syria</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">B.Eng.</div>
+                        <div>
+                            <div class="timeline-title">B.Eng. in Computer Engineering</div>
+                            <div class="timeline-org">Damascus University, Syria</div>
+                        </div>
+                    </div>
+
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-title">Senior Researcher</div>
-                    <div class="timeline-meta">Faculty of Engineering, Multimedia University, Malaysia | 2019 - 2021</div>
-                    <p>Researched deep learning applications for computer vision and signal processing.</p>
+            </section>
+
+            <!-- 03 Selected Research & Publications -->
+            <section id="publications">
+                <div class="section-num">03</div>
+                <h2>Selected Publications</h2>
+                <div class="pub-list">
+
+                    <div class="pub-item">
+                        <div class="pub-title">Guardians of Digital Safety: Benchmarking Large Language Models in the Fight Against Online Toxicity</div>
+                        <div class="pub-authors"><strong>AlDahoul, N.</strong>, et al.</div>
+                        <div class="pub-meta">
+                            <span class="pub-venue">Journal of Big Data</span>
+                        </div>
+                        <div class="pub-desc">Benchmarking large language models and evaluation frameworks for mitigating online toxicity and safe AI deployments.</div>
+                    </div>
+
+                    <div class="pub-item">
+                        <div class="pub-title">AI-generated faces influence gender stereotypes and racial homogenization</div>
+                        <div class="pub-authors"><strong>AlDahoul, N.</strong>, et al.</div>
+                        <div class="pub-meta">
+                            <span class="pub-venue">Scientific Reports</span>
+                        </div>
+                        <div class="pub-desc">Proposing debiasing solutions that allow users to specify the desired distributions of race and gender when generating images while minimizing racial homogenization.</div>
+                    </div>
+
+                    <div class="pub-item">
+                        <div class="pub-title">RGB-D Based Multi-Modal Deep Learning for Spacecraft and Debris Recognition</div>
+                        <div class="pub-authors"><strong>AlDahoul, N.</strong>, et al.</div>
+                        <div class="pub-meta">
+                            <span class="pub-venue">Scientific Reports</span>
+                        </div>
+                        <div class="pub-desc">Applying deep learning visual recognition models for orbital object safety and space debris identification.</div>
+                    </div>
+
+                    <div class="pub-item">
+                        <div class="pub-title">Suspended Sediment Load Prediction Using Long Short-Term Memory Neural Network</div>
+                        <div class="pub-authors"><strong>AlDahoul, N.</strong>, et al.</div>
+                        <div class="pub-meta">
+                            <span class="pub-venue">Scientific Reports</span>
+                        </div>
+                        <div class="pub-desc">Predictive modeling using recurrent neural architectures for environmental dynamics.</div>
+                    </div>
+
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-title">Ph.D. in Engineering</div>
-                    <div class="timeline-meta">International Islamic University Malaysia</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-title">M.Eng. in Robotics Engineering</div>
-                    <div class="timeline-meta">Damascus University, Syria</div>
-                </div>
-                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-title">B.Eng. in Computer Engineering</div>
-                    <div class="timeline-meta">Damascus University, Syria</div>
-                </div>
-            </div>
-        </section>
+            </section>
+        </main>
 
-        <!-- Featured Publications -->
-        <section>
-            <h2><i class="fa-solid fa-book-bookmark"></i> Selected Research & Publications</h2>
-            
-            <div class="pub-card">
-                <div class="pub-title">Guardians of Digital Safety: Benchmarking Large Language Models in the Fight Against Online Toxicity</div>
-                <div class="pub-venue">Journal of Big Data</div>
-                <div class="pub-desc">Benchmarking large language models and evaluation frameworks for mitigating online toxicity and safe AI deployments.</div>
-            </div>
+        <footer>
+            <p>&copy; Nouar AlDahoul &bull; Built with GitHub Pages</p>
+        </footer>
 
-            <div class="pub-card">
-                <div class="pub-title">AI-generated faces influence gender stereotypes and racial homogenization</div>
-                <div class="pub-venue">Scientific Reports</div>
-                <div class="pub-desc">Proposing debiasing solutions that allow users to specify the desired distributions of race and gender when generating images while minimizing racial homogenization.</div>
-            </div>
-
-            <div class="pub-card">
-                <div class="pub-title">RGB-D Based Multi-Modal Deep Learning for Spacecraft and Debris Recognition</div>
-                <div class="pub-venue">Scientific Reports</div>
-                <div class="pub-desc">Applying deep learning visual recognition models for orbital object safety and space debris identification.</div>
-            </div>
-
-            <div class="pub-card">
-                <div class="pub-title">Suspended Sediment Load Prediction Using Long Short-Term Memory Neural Network</div>
-                <div class="pub-venue">Scientific Reports</div>
-                <div class="pub-desc">Predictive modeling using recurrent neural architectures for environmental dynamics.</div>
-            </div>
-        </section>
-
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; Nouar AlDahoul. Hosted via GitHub Pages.</p>
-        </div>
-    </footer>
+    </div>
 
 </body>
 </html>
