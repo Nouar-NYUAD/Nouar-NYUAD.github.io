@@ -9,11 +9,11 @@
         :root {
             --bg: #fafafa;
             --card-bg: #ffffff;
-            --text-primary: #0f172a;   /* Dark navy/slate for highest readability */
-            --text-secondary: #334155; /* Mid-slate for descriptive body text */
-            --text-muted: #64748b;     /* Muted slate for dates & metadata */
-            --nyu-purple: #57068c;     /* NYU Primary Purple */
-            --nyu-light: #f3e8ff;      /* Very soft purple accent background */
+            --text-primary: #0f172a;
+            --text-secondary: #334155;
+            --text-muted: #64748b;
+            --nyu-purple: #57068c;
+            --nyu-light: #f3e8ff;
             --nyu-hover: #7020a3;
             --border: #e2e8f0;
         }
@@ -30,6 +30,7 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         .container {
@@ -48,7 +49,7 @@
         .profile-title {
             font-size: clamp(2rem, 5vw, 2.5rem);
             font-weight: 800;
-            letter-spacing: -0.8px;
+            letter-spacing: -0.5px;
             color: var(--text-primary);
             margin-bottom: 6px;
         }
@@ -70,7 +71,7 @@
             font-weight: 500;
         }
 
-        /* Action Buttons */
+        /* Nav Links */
         .links-nav {
             display: flex;
             flex-wrap: wrap;
@@ -100,7 +101,7 @@
             transform: translateY(-1px);
         }
 
-        /* Section Layout */
+        /* Sections */
         section {
             margin-bottom: 55px;
         }
@@ -134,7 +135,9 @@
             color: var(--text-secondary);
             line-height: 1.7;
             text-align: left;
-            margin-bottom: 16px;
+            margin-bottom: 18px;
+            word-break: normal;
+            hyphens: auto;
         }
 
         /* Tags */
@@ -222,8 +225,8 @@
 
         .pub-title {
             font-weight: 700;
-            font-size: 1.1rem;
-            line-height: 1.4;
+            font-size: 1.08rem;
+            line-height: 1.45;
             margin-bottom: 6px;
         }
 
@@ -270,7 +273,6 @@
             line-height: 1.5;
         }
 
-        /* Footer */
         footer {
             margin-top: 60px;
             padding-top: 24px;
@@ -299,7 +301,7 @@
         <!-- Header -->
         <header>
             <h1 class="profile-title">Nouar AlDahoul</h1>
-            <div class="profile-subtitle">AI Research Scientist</div>
+            <div class="profile-subtitle">Research Scientist</div>
             <div class="profile-affiliation">
                 <i class="fa-solid fa-building-columns" aria-hidden="true"></i> New York University Abu Dhabi, UAE
             </div>
@@ -330,7 +332,7 @@
                     Nouar AlDahoul is a Research Scientist Associate at NYUAD, specializing in artificial intelligence, environmental modeling, healthcare applications, and computational social science. She received her Ph.D. in Engineering from the International Islamic University Malaysia in 2019. She previously served as a postdoctoral associate at NYUAD, where she led experimental studies on gender and racial bias in generative AI, safety in large language models (LLMs), content moderation in media, misinformation detection, and political ideological leanings in LLMs. Her work bridges technical innovation with ethical inquiry, advancing fairness, safety, and interpretability in AI systems.
                 </p>
                 <p class="about-text">
-                    In parallel with her research, Nouar has worked extensively as a trainer with "Tertiary Courses Malaysia" and "Iverson Malaysia," delivering over 60 workshops to individuals, academic groups, and corporate teams. Her sessions cover a wide range of topics, including AI, machine learning, natural language processing, computer vision, the Internet of Things (IoT), and LLMs. She emphasizes hands-on learning, conceptual clarity, and real-world application, empowering diverse audiences to engage meaningfully with emerging technologies.
+                    In parallel with her research, Nouar has worked extensively as a trainer with &quot;Tertiary Courses Malaysia&quot; and &quot;Iverson Malaysia,&quot; delivering over 60 workshops to individuals, academic groups, and corporate teams. Her sessions cover a wide range of topics, including AI, machine learning, natural language processing, computer vision, the Internet of Things (IoT), and LLMs. She emphasizes hands-on learning, conceptual clarity, and real-world application, empowering diverse audiences to engage meaningfully with emerging technologies.
                 </p>
                 <p class="about-text">
                     She has also participated in international conference challenges such as ICIP2020 and ArabicNLP2025, securing first place in both—demonstrating her ability to translate cutting-edge research into competitive, high-impact solutions.
@@ -341,7 +343,7 @@
                     <span class="tag">Computer Vision</span>
                     <span class="tag">Computational Social Science</span>
                     <span class="tag">Natural Language Processing</span>
-                    <span class="tag">Generative AI & LLMs</span>
+                    <span class="tag">Generative AI &amp; LLMs</span>
                     <span class="tag">Internet of Things (IoT)</span>
                 </div>
             </section>
@@ -350,7 +352,7 @@
             <section id="experience">
                 <div class="section-header">
                     <span class="section-num">02</span>
-                    <h2>Experience & Education</h2>
+                    <h2>Experience &amp; Education</h2>
                 </div>
                 <div class="timeline">
                     
@@ -422,7 +424,7 @@
                                 Guardians of Digital Safety: Benchmarking Large Language Models in the Fight Against Online Toxicity
                             </a>
                         </div>
-                        <div class="pub-authors"><strong>AlDahoul, N.</strong>, et al.</div>
+                        <div class="pub-authors"><strong>AlDahoul, N.</strong>, Tan, M. J. T., Kasireddy, H. R., &amp; Zaki, Y.</div>
                         <div class="pub-meta">
                             <span class="pub-venue">Journal of Big Data</span>
                         </div>
@@ -431,15 +433,15 @@
 
                     <div class="pub-item">
                         <div class="pub-title">
-                            <a href="https://doi.org/10.1038/s41598-025-14449-x" target="_blank" rel="noopener noreferrer">
+                            <a href="https://arxiv.org/abs/2402.01002" target="_blank" rel="noopener noreferrer">
                                 AI-generated faces influence gender stereotypes and racial homogenization
                             </a>
                         </div>
-                        <div class="pub-authors"><strong>AlDahoul, N.</strong>, et al.</div>
+                        <div class="pub-authors"><strong>AlDahoul, N.</strong>, Rahwan, T., &amp; Zaki, Y.</div>
                         <div class="pub-meta">
-                            <span class="pub-venue">Scientific Reports</span>
+                            <span class="pub-venue">Scientific Reports / arXiv:2402.01002</span>
                         </div>
-                        <div class="pub-desc">Proposing debiasing solutions that allow users to specify the desired distributions of race and gender when generating images while minimizing racial homogenization.</div>
+                        <div class="pub-desc">Proposing debiasing solutions that allow users to specify desired distributions of race and gender when generating images while minimizing racial homogenization.</div>
                     </div>
 
                     <div class="pub-item">
@@ -481,15 +483,54 @@
 
                     <div class="pub-item">
                         <div class="pub-title">
-                            <a href="https://arxiv.org/abs/2406.10400" target="_blank" rel="noopener noreferrer">
-                                Self-Reflection Makes Large Language Models Safer, Less Biased, and Ideologically Neutral
+                            <a href="https://arxiv.org/abs/2608.05178" target="_blank" rel="noopener noreferrer">
+                                Who Gets Access? Global Region and Academic Status Bias in AI-Generated Academic Gatekeeping Scenarios
                             </a>
                         </div>
-                        <div class="pub-authors">Liu, F., <strong>AlDahoul, N.</strong>, Eady, G., Zaki, Y., AlShebli, B., & Rahwan, T.</div>
+                        <div class="pub-authors"><strong>AlDahoul, N.</strong>, Karim, H. A., &amp; Tan, M. J. T.</div>
                         <div class="pub-meta">
-                            <span class="pub-venue">arXiv Preprint (arXiv:2406.10400)</span>
+                            <span class="pub-venue">arXiv Preprint (arXiv:2608.05178)</span>
                         </div>
-                        <div class="pub-desc">Proposes a self-reflection framework enabling LLMs to self-correct toxic behaviors, reduce inherent biases, and achieve ideological neutrality without heavy fine-tuning.</div>
+                        <div class="pub-desc">Investigating systemic geographical and status biases when LLM agents act as gatekeepers in simulated academic selection processes.</div>
+                    </div>
+
+                    <div class="pub-item">
+                        <div class="pub-title">
+                            <a href="https://arxiv.org/abs/2505.04171" target="_blank" rel="noopener noreferrer">
+                                Large Language Models are often politically extreme, usually ideologically inconsistent, and persuasive even in informational contexts
+                            </a>
+                        </div>
+                        <div class="pub-authors"><strong>AlDahoul, N.</strong>, et al.</div>
+                        <div class="pub-meta">
+                            <span class="pub-venue">arXiv Preprint (arXiv:2505.04171)</span>
+                        </div>
+                        <div class="pub-desc">Analyzing the political ideology, consistency, and persuasive characteristics of LLMs in informational environments.</div>
+                    </div>
+
+                    <div class="pub-item">
+                        <div class="pub-title">
+                            <a href="https://arxiv.org/abs/2410.24148" target="_blank" rel="noopener noreferrer">
+                                Exploring Vision Language Models for Facial Attribute Recognition: Emotion, Race, Gender, and Age (FaceScanPaliGemma)
+                            </a>
+                        </div>
+                        <div class="pub-authors"><strong>AlDahoul, N.</strong>, Tan, M. J. T., Kasireddy, H. R., &amp; Zaki, Y.</div>
+                        <div class="pub-meta">
+                            <span class="pub-venue">arXiv Preprint (arXiv:2410.24148)</span>
+                        </div>
+                        <div class="pub-desc">Evaluating vision-language model capabilities (including FaceScanPaliGemma) for multi-attribute facial recognition tasks across demographic dimensions.</div>
+                    </div>
+
+                    <div class="pub-item">
+                        <div class="pub-title">
+                            <a href="https://arxiv.org/abs/2310.17370" target="_blank" rel="noopener noreferrer">
+                                Towards a World Wide Web powered by generative AI
+                            </a>
+                        </div>
+                        <div class="pub-authors"><strong>AlDahoul, N.</strong>, Hong, J., Varvello, M., &amp; Zaki, Y.</div>
+                        <div class="pub-meta">
+                            <span class="pub-venue">arXiv Preprint (arXiv:2310.17370)</span>
+                        </div>
+                        <div class="pub-desc">Exploring the future integration and architecture of generative AI models within web systems and user browsing experiences.</div>
                     </div>
 
                     <div class="pub-item">
@@ -502,20 +543,7 @@
                         <div class="pub-meta">
                             <span class="pub-venue">arXiv Preprint (arXiv:2411.17123)</span>
                         </div>
-                        <div class="pub-desc">Comprehensive evaluation of LLMs and vision-language models for multi-modal content moderation across multimodal inputs.</div>
-                    </div>
-
-                    <div class="pub-item">
-                        <div class="pub-title">
-                            <a href="https://ssrn.com/abstract=7008282" target="_blank" rel="noopener noreferrer">
-                                Who Gets Access? Global Region and Academic Status Bias in AI-Generated Academic Gatekeeping Scenarios
-                            </a>
-                        </div>
-                        <div class="pub-authors"><strong>AlDahoul, N.</strong>, Karim, H. A., & Tan, M. J.</div>
-                        <div class="pub-meta">
-                            <span class="pub-venue">SSRN Preprint (SSRN 7008282)</span>
-                        </div>
-                        <div class="pub-desc">Investigating systemic geographical and status biases when LLM agents act as gatekeepers in simulated academic selection processes.</div>
+                        <div class="pub-desc">Comprehensive evaluation of LLMs and vision-language models for multimodal content moderation across text, images, and videos.</div>
                     </div>
 
                     <div class="pub-item">
@@ -524,11 +552,24 @@
                                 Predicting the Pitch or Repeating the Public? Large Language Models and Sports Consensus Bias in the FIFA World Cup 2026
                             </a>
                         </div>
-                        <div class="pub-authors"><strong>AlDahoul, N.</strong>, Karim, H. A., & Tan, M. J.</div>
+                        <div class="pub-authors"><strong>AlDahoul, N.</strong>, Karim, H. A., &amp; Tan, M. J. T.</div>
                         <div class="pub-meta">
                             <span class="pub-venue">SSRN Preprint (SSRN 6900538)</span>
                         </div>
                         <div class="pub-desc">Analyzing whether LLMs form independent predictive abilities or merely mirror public consensus biases in sports forecasting.</div>
+                    </div>
+
+                    <div class="pub-item">
+                        <div class="pub-title">
+                            <a href="https://arxiv.org/abs/2406.10400" target="_blank" rel="noopener noreferrer">
+                                Self-Reflection Makes Large Language Models Safer, Less Biased, and Ideologically Neutral
+                            </a>
+                        </div>
+                        <div class="pub-authors">Liu, F., <strong>AlDahoul, N.</strong>, Eady, G., Zaki, Y., AlShebli, B., &amp; Rahwan, T.</div>
+                        <div class="pub-meta">
+                            <span class="pub-venue">arXiv Preprint (arXiv:2406.10400)</span>
+                        </div>
+                        <div class="pub-desc">Proposes a self-reflection framework enabling LLMs to self-correct toxic behaviors, reduce inherent biases, and achieve ideological neutrality without heavy fine-tuning.</div>
                     </div>
 
                 </div>
