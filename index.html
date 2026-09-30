@@ -46,7 +46,7 @@
         }
 
         .profile-title {
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 5vw, 2.5rem);
             font-weight: 800;
             letter-spacing: -0.8px;
             color: var(--text-primary);
@@ -221,9 +221,18 @@
         .pub-title {
             font-weight: 700;
             font-size: 1.1rem;
-            color: var(--text-primary);
             line-height: 1.4;
             margin-bottom: 6px;
+        }
+
+        .pub-title a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .pub-title a:hover {
+            color: var(--nyu-purple);
         }
 
         .pub-authors {
@@ -278,9 +287,6 @@
             .container {
                 padding: 30px 16px;
             }
-            .profile-title {
-                font-size: 2rem;
-            }
         }
     </style>
 </head>
@@ -293,20 +299,20 @@
             <h1 class="profile-title">Nouar AlDahoul</h1>
             <div class="profile-subtitle">AI Research Scientist</div>
             <div class="profile-affiliation">
-                <i class="fa-solid fa-building-columns"></i> New York University Abu Dhabi, UAE
+                <i class="fa-solid fa-building-columns" aria-hidden="true"></i> New York University Abu Dhabi, UAE
             </div>
             <div class="links-nav">
-                <a href="https://scholar.google.com/citations?user=iZFxfAoAAAAJ" target="_blank">
-                    <i class="fa-solid fa-graduation-cap"></i> Google Scholar
+                <a href="https://scholar.google.com/citations?user=iZFxfAoAAAAJ" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Google Scholar
                 </a>
-                <a href="https://orcid.org/0000-0001-5522-0033" target="_blank">
-                    <i class="fa-brands fa-orcid"></i> ORCID
+                <a href="https://orcid.org/0000-0001-5522-0033" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-brands fa-orcid" aria-hidden="true"></i> ORCID
                 </a>
-                <a href="https://www.researchgate.net/profile/Nouar-Aldahoul" target="_blank">
-                    <i class="fa-brands fa-researchgate"></i> ResearchGate
+                <a href="https://www.researchgate.net/profile/Nouar-Aldahoul" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-brands fa-researchgate" aria-hidden="true"></i> ResearchGate
                 </a>
                 <a href="mailto:naa9497@nyu.edu">
-                    <i class="fa-solid fa-envelope"></i> Email
+                    <i class="fa-solid fa-envelope" aria-hidden="true"></i> Email
                 </a>
             </div>
         </header>
@@ -323,7 +329,8 @@ Nouar AlDahoul is a Research Scientist Associate at NYUAD, specializing in artif
 
 In parallel with her research, Nouar has worked extensively as a trainer with "Tertiary Courses Malaysia" and "Iverson Malaysia," delivering over 60 workshops to individuals, academic groups, and corporate teams. Her sessions cover a wide range of topics, including AI, machine learning, natural language processing, computer vision, the Internet of Things (IoT), and LLMs. She emphasizes hands-on learning, conceptual clarity, and real-world application, empowering diverse audiences to engage meaningfully with emerging technologies.
 
-She has also participated in international conference challenges such as ICIP2020 and ArabicNLP2025, securing first place in both—demonstrating her ability to translate cutting-edge research into competitive, high-impact solutions.                </p>
+She has also participated in international conference challenges such as ICIP2020 and ArabicNLP2025, securing first place in both—demonstrating her ability to translate cutting-edge research into competitive, high-impact solutions.
+                </p>
                 <div class="tags">
                     <span class="tag">Machine Learning</span>
                     <span class="tag">Deep Learning</span>
@@ -406,7 +413,11 @@ She has also participated in international conference challenges such as ICIP202
                 <div class="pub-list">
 
                     <div class="pub-item">
-                        <div class="pub-title">Guardians of Digital Safety: Benchmarking Large Language Models in the Fight Against Online Toxicity</div>
+                        <div class="pub-title">
+                            <a href="https://doi.org/10.1186/s40537-025-01336-x" target="_blank" rel="noopener noreferrer">
+                                Guardians of Digital Safety: Benchmarking Large Language Models in the Fight Against Online Toxicity
+                            </a>
+                        </div>
                         <div class="pub-authors"><strong>AlDahoul, N.</strong>, et al.</div>
                         <div class="pub-meta">
                             <span class="pub-venue">Journal of Big Data</span>
@@ -415,7 +426,11 @@ She has also participated in international conference challenges such as ICIP202
                     </div>
 
                     <div class="pub-item">
-                        <div class="pub-title">AI-generated faces influence gender stereotypes and racial homogenization</div>
+                        <div class="pub-title">
+                            <a href="https://doi.org/10.1038/s41598-025-14449-x" target="_blank" rel="noopener noreferrer">
+                                AI-generated faces influence gender stereotypes and racial homogenization
+                            </a>
+                        </div>
                         <div class="pub-authors"><strong>AlDahoul, N.</strong>, et al.</div>
                         <div class="pub-meta">
                             <span class="pub-venue">Scientific Reports</span>
@@ -424,7 +439,11 @@ She has also participated in international conference challenges such as ICIP202
                     </div>
 
                     <div class="pub-item">
-                        <div class="pub-title">RGB-D Based Multi-Modal Deep Learning for Spacecraft and Debris Recognition</div>
+                        <div class="pub-title">
+                            <a href="https://doi.org/10.1038/s41598-022-24314-2" target="_blank" rel="noopener noreferrer">
+                                RGB-D Based Multi-Modal Deep Learning for Spacecraft and Debris Recognition
+                            </a>
+                        </div>
                         <div class="pub-authors"><strong>AlDahoul, N.</strong>, et al.</div>
                         <div class="pub-meta">
                             <span class="pub-venue">Scientific Reports</span>
@@ -433,12 +452,40 @@ She has also participated in international conference challenges such as ICIP202
                     </div>
 
                     <div class="pub-item">
-                        <div class="pub-title">Suspended Sediment Load Prediction Using Long Short-Term Memory Neural Network</div>
+                        <div class="pub-title">
+                            <a href="https://doi.org/10.1038/s41598-021-87413-x" target="_blank" rel="noopener noreferrer">
+                                Suspended Sediment Load Prediction Using Long Short-Term Memory Neural Network
+                            </a>
+                        </div>
                         <div class="pub-authors"><strong>AlDahoul, N.</strong>, et al.</div>
                         <div class="pub-meta">
                             <span class="pub-venue">Scientific Reports</span>
                         </div>
                         <div class="pub-desc">Predictive modeling using recurrent neural architectures for environmental dynamics.</div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- 04 Preprints -->
+            <section id="preprints">
+                <div class="section-header">
+                    <span class="section-num">04</span>
+                    <h2>Preprints</h2>
+                </div>
+                <div class="pub-list">
+
+                    <div class="pub-item">
+                        <div class="pub-title">
+                            <a href="https://arxiv.org/abs/2406.10400" target="_blank" rel="noopener noreferrer">
+                                Self-Reflection Makes Large Language Models Safer, Less Biased, and Ideologically Neutral
+                            </a>
+                        </div>
+                        <div class="pub-authors">Liu, F., <strong>AlDahoul, N.</strong>, Eady, G., Zaki, Y., AlShebli, B., & Rahwan, T.</div>
+                        <div class="pub-meta">
+                            <span class="pub-venue">arXiv Preprint (arXiv:2406.10400)</span>
+                        </div>
+                        <div class="pub-desc">Proposes a self-reflection framework enabling LLMs to self-correct toxic behaviors, reduce inherent biases, and achieve ideological neutrality without heavy fine-tuning.</div>
                     </div>
 
                 </div>
