@@ -7,13 +7,15 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-            --bg: #ffffff;
-            --text: #1a1a1a;
-            --text-secondary: #555555;
-            --text-muted: #888888;
-            --accent: #57068c; /* NYU Purple */
-            --border: #eaeaea;
-            --tag-bg: #f5f5f7;
+            --bg: #fafafa;
+            --card-bg: #ffffff;
+            --text-primary: #0f172a;   /* Dark navy/slate for highest readability */
+            --text-secondary: #334155; /* Mid-slate for descriptive body text */
+            --text-muted: #64748b;     /* Muted slate for dates & metadata */
+            --nyu-purple: #57068c;     /* NYU Primary Purple */
+            --nyu-light: #f3e8ff;      /* Very soft purple accent background */
+            --nyu-hover: #7020a3;
+            --border: #e2e8f0;
         }
 
         * {
@@ -24,69 +26,78 @@
 
         body {
             background-color: var(--bg);
-            color: var(--text);
+            color: var(--text-primary);
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
         }
 
         .container {
-            max-width: 780px;
+            max-width: 840px;
             margin: 0 auto;
-            padding: 60px 20px 80px;
+            padding: 60px 24px 80px;
         }
 
-        /* Header / Profile */
+        /* Top Header */
         header {
             margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid var(--border);
         }
 
         .profile-title {
-            font-size: 2.2rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            color: var(--text);
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.8px;
+            color: var(--text-primary);
             margin-bottom: 6px;
         }
 
         .profile-subtitle {
-            font-size: 1.15rem;
-            color: var(--text-secondary);
-            font-weight: 400;
-            margin-bottom: 6px;
+            font-size: 1.25rem;
+            color: var(--nyu-purple);
+            font-weight: 600;
+            margin-bottom: 8px;
         }
 
         .profile-affiliation {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            margin-bottom: 20px;
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
+            font-weight: 500;
         }
 
-        /* Social & Academic Links */
+        /* Action Buttons */
         .links-nav {
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
-            padding-top: 10px;
+            gap: 12px;
         }
 
         .links-nav a {
-            color: var(--text-secondary);
+            color: var(--nyu-purple);
+            background: var(--card-bg);
+            border: 1.5px solid #d8b4fe;
             text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 8px;
             font-size: 0.9rem;
-            font-weight: 500;
+            font-weight: 600;
             display: flex;
             align-items: center;
-            gap: 6px;
-            transition: color 0.2s ease;
+            gap: 8px;
+            transition: all 0.2s ease;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
 
         .links-nav a:hover {
-            color: var(--accent);
-            text-decoration: underline;
+            background: var(--nyu-purple);
+            color: #ffffff;
+            border-color: var(--nyu-purple);
+            transform: translateY(-1px);
         }
 
         /* Section Layout */
@@ -94,31 +105,37 @@
             margin-bottom: 55px;
         }
 
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border);
+        }
+
         .section-num {
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            color: var(--text-muted);
-            margin-bottom: 4px;
-            text-transform: uppercase;
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: var(--nyu-purple);
+            background: var(--nyu-light);
+            padding: 2px 8px;
+            border-radius: 4px;
         }
 
         h2 {
-            font-size: 1.35rem;
-            font-weight: 600;
-            color: var(--text);
-            padding-bottom: 10px;
-            border-bottom: 1px solid var(--border);
-            margin-bottom: 25px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-primary);
         }
 
         .about-text {
-            font-size: 1rem;
+            font-size: 1.05rem;
             color: var(--text-secondary);
             line-height: 1.7;
         }
 
-        /* Research Interest Tags */
+        /* Tags */
         .tags {
             display: flex;
             flex-wrap: wrap;
@@ -127,124 +144,142 @@
         }
 
         .tag {
-            background: var(--tag-bg);
-            color: var(--text-secondary);
-            padding: 4px 12px;
-            border-radius: 4px;
-            font-size: 0.82rem;
-            font-weight: 500;
+            background: var(--card-bg);
+            color: var(--text-primary);
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
             border: 1px solid var(--border);
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
         }
 
-        /* Timeline / Experience */
+        /* Grid Timeline */
         .timeline {
             display: flex;
             flex-direction: column;
-            gap: 22px;
+            gap: 24px;
         }
 
         .timeline-item {
             display: grid;
-            grid-template-columns: 140px 1fr;
-            gap: 15px;
+            grid-template-columns: 150px 1fr;
+            gap: 20px;
+            background: var(--card-bg);
+            padding: 18px 20px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
         }
 
         .timeline-date {
-            font-size: 0.88rem;
-            color: var(--text-muted);
-            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--nyu-purple);
+            font-weight: 700;
             padding-top: 2px;
         }
 
         .timeline-title {
-            font-weight: 600;
-            font-size: 1rem;
-            color: var(--text);
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 2px;
         }
 
         .timeline-org {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: var(--text-secondary);
-            margin-bottom: 4px;
+            font-weight: 600;
+            margin-bottom: 6px;
         }
 
         .timeline-desc {
-            font-size: 0.88rem;
+            font-size: 0.92rem;
             color: var(--text-muted);
             line-height: 1.5;
         }
 
-        /* Publications */
+        /* Publications List */
         .pub-list {
             display: flex;
             flex-direction: column;
-            gap: 28px;
+            gap: 20px;
         }
 
         .pub-item {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--nyu-purple);
+            transition: transform 0.2s ease;
+        }
+
+        .pub-item:hover {
+            transform: translateX(4px);
         }
 
         .pub-title {
-            font-weight: 600;
-            font-size: 1.02rem;
-            color: var(--text);
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-primary);
             line-height: 1.4;
-            text-decoration: none;
+            margin-bottom: 6px;
         }
 
         .pub-authors {
-            font-size: 0.9rem;
+            font-size: 0.92rem;
             color: var(--text-secondary);
+            margin-bottom: 6px;
         }
 
         .pub-authors strong {
-            color: var(--text);
+            color: var(--nyu-purple);
+            font-weight: 700;
         }
 
         .pub-meta {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.85rem;
-            margin-top: 2px;
+            margin-bottom: 8px;
         }
 
         .pub-venue {
-            font-style: italic;
-            color: var(--accent);
-            font-weight: 500;
+            display: inline-block;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--nyu-purple);
+            background: var(--nyu-light);
+            padding: 3px 10px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .pub-desc {
-            font-size: 0.88rem;
+            font-size: 0.92rem;
             color: var(--text-muted);
-            margin-top: 4px;
             line-height: 1.5;
         }
 
         /* Footer */
         footer {
-            margin-top: 80px;
-            padding-top: 20px;
+            margin-top: 60px;
+            padding-top: 24px;
             border-top: 1px solid var(--border);
             color: var(--text-muted);
-            font-size: 0.82rem;
+            font-size: 0.88rem;
             text-align: center;
+            font-weight: 500;
         }
 
-        @media (max-width: 640px) {
+        @media (max-width: 680px) {
             .timeline-item {
                 grid-template-columns: 1fr;
-                gap: 4px;
+                gap: 6px;
             }
             .container {
-                padding: 40px 18px;
+                padding: 30px 16px;
             }
             .profile-title {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
         }
     </style>
@@ -279,8 +314,10 @@
         <main>
             <!-- 01 About -->
             <section id="about">
-                <div class="section-num">01</div>
-                <h2>About</h2>
+                <div class="section-header">
+                    <span class="section-num">01</span>
+                    <h2>About</h2>
+                </div>
                 <p class="about-text">
                     I am a Research Scientist in Computer Science at New York University Abu Dhabi (NYUAD). My research focuses on leveraging Machine Learning and Deep Learning to solve complex challenges across Computational Social Science, Computer Vision, and Digital Health.
                 </p>
@@ -297,8 +334,10 @@
 
             <!-- 02 Experience & Education -->
             <section id="experience">
-                <div class="section-num">02</div>
-                <h2>Experience & Education</h2>
+                <div class="section-header">
+                    <span class="section-num">02</span>
+                    <h2>Experience & Education</h2>
+                </div>
                 <div class="timeline">
                     
                     <div class="timeline-item">
@@ -357,8 +396,10 @@
 
             <!-- 03 Selected Research & Publications -->
             <section id="publications">
-                <div class="section-num">03</div>
-                <h2>Selected Publications</h2>
+                <div class="section-header">
+                    <span class="section-num">03</span>
+                    <h2>Selected Publications</h2>
+                </div>
                 <div class="pub-list">
 
                     <div class="pub-item">
@@ -402,7 +443,7 @@
         </main>
 
         <footer>
-            <p>&copy; Nouar AlDahoul &bull; Built with GitHub Pages</p>
+            <p>&copy; Nouar AlDahoul &bull; NYU Abu Dhabi</p>
         </footer>
 
     </div>
